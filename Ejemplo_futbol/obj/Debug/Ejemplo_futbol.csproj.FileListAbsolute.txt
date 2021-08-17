@@ -1,0 +1,10 @@
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.csproj.AssemblyReference.cache
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.Main_view.resources
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.Properties.Resources.resources
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.csproj.GenerateResource.cache
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.csproj.CoreCompileInputs.cache
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\bin\Debug\Ejemplo_futbol.exe.config
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\bin\Debug\Ejemplo_futbol.exe
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\bin\Debug\Ejemplo_futbol.pdb
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.exe
+C:\Users\familia\source\repos\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.pdb
