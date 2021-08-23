@@ -12,8 +12,8 @@ namespace Ejemplo_futbol
         public static SqlConnection conectar()
         {
 
-            string connection_string = "Data Source=DESKTOP-OEVSSQ4, 1433;Initial Catalog=bdFutbol;User ID=sa;Password=sa";
-            SqlConnection connection = new SqlConnection(connection_string);
+            string connectionString = "Data Source=DESKTOP-2IDJVON\\SQLEXPRESS01;Initial Catalog=bdFutbol;User ID=sa;Password=michael";
+            SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }
     }

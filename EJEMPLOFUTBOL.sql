@@ -104,16 +104,25 @@ create procedure consulta_contratos @equipo int, @precio_anual int, @precio_reci
 	as
 	begin
 		set @futbolistas_activos= (select COUNT(contratos.codcontrato) from contratos
-				where contratos.codEquipo=1 and GETDATE()<contratos.fechaFin
+				where contratos.codEquipo=@equipo and GETDATE()<contratos.fechaFin
 				);
 		
 		set @futbolistas_activos_condiciones=(select COUNT(contratos.codcontrato) from contratos
-				where contratos.codEquipo=1 and GETDATE()<contratos.fechaFin and contratos.precioanual<@precio_anual and contratos.preciorecision=@precio_recision
+				where contratos.codEquipo=@equipo and GETDATE()<contratos.fechaFin and contratos.precioanual<@precio_anual and contratos.preciorecision<@precio_recision
 		);
 	end
 go
+select * from contratos
 /*
 declare  @numero_activos INT , @numero_consultado INT 
-	exec consulta_contratos 1,5130000 ,500000, @numero_activos output, @numero_consultado output
+	exec consulta_contratos 2,5130000 ,500000, @numero_activos output, @numero_consultado output
 	select @numero_activos, @numero_consultado
 	*/
+
+
+/*Crear un procedimiento almacenado que inserte un equipo, de modo que se le pase como parámetros
+todos los datos.
+Comprobar que el código de liga pasado exista en la tabla ligas. En caso de que no exista la liga que
+no se inserte.
+Devolver en un parámetro de salida: 0 si la liga no existe y 1 si la liga existe.
+*/
