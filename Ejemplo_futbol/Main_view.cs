@@ -63,11 +63,11 @@ namespace Ejemplo_futbol
 
                 SqlParameter param_precio_anual = new SqlParameter("@precio_anual", SqlDbType.Int);
                 param_precio_anual.Direction = ParameterDirection.Input;
-                param_precio_anual.Value = box_precio_anual.Text;
+                param_precio_anual.Value = Int32.Parse(box_precio_anual.Text);
 
                 SqlParameter param_precio_recision = new SqlParameter("@precio_recision", SqlDbType.Int);
                 param_precio_recision.Direction = ParameterDirection.Input;
-                param_precio_recision.Value = box_precio_recision.Text;
+                param_precio_recision.Value = Int32.Parse(box_precio_recision.Text);
 
                 SqlParameter param_futbolistas_activos_out = new SqlParameter("@futbolistas_activos", SqlDbType.Int);
                 param_futbolistas_activos_out.Direction = ParameterDirection.Output;
