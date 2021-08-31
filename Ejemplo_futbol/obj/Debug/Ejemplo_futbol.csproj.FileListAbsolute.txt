@@ -28,3 +28,8 @@ C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.
 C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.csproj.CoreCompileInputs.cache
 C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.exe
 C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.pdb
+C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\bin\Debug\QRCoder.dll
+C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.csproj.CopyComplete
+C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Michael\Desktop\Ejemplo_futbol\Ejemplo_futbol\obj\Debug\Ejemplo_futbol.QRview.resources

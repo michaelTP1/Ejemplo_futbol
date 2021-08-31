@@ -126,3 +126,51 @@ Comprobar que el código de liga pasado exista en la tabla ligas. En caso de que 
 no se inserte.
 Devolver en un parámetro de salida: 0 si la liga no existe y 1 si la liga existe.
 */
+go
+create function existe_liga (@codLiga char(5))
+	returns int
+	begin
+		declare @ans int
+		if exists(select *from ligas where codLiga=@codLiga)
+			set @ans=1
+		else 
+			set @ans=0
+		return @ans
+	end
+go
+
+go
+create procedure insertar_equipo
+	@nomEquipo varchar(40),	@codLiga char(5), @localidad varchar(60),@internacional bit, @liga_existe bit output
+		as	
+		begin
+		
+			set @liga_existe=dbo.existe_liga(@codLiga)
+			if @liga_existe=1
+				begin
+					
+					insert into equipos values ( @nomEquipo, @codLiga, @localidad, @internacional)
+					
+				end
+		end
+
+go
+create procedure actualizar_equipo
+	@codEquipo int, @nomEquipo varchar(40),	@codLiga char(5), @localidad varchar(60),@internacional bit, @liga_existe bit output
+		as	
+		begin
+		
+			set @liga_existe=dbo.existe_liga(@codLiga)
+			if @liga_existe=1
+				begin
+					update equipos
+					set nomEquipo=@nomEquipo, 
+						codLiga=@codLiga,
+						localidad=@localidad,
+						internacional=@internacional
+
+					where codEquipo=@codEquipo;
+				end
+		end
+
+go

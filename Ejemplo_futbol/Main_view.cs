@@ -8,46 +8,86 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Collections;
+using QRCoder;
+
 
 namespace Ejemplo_futbol
 {
     public partial class Main_view : Form
     {
         private SqlConnection connection;
+        private DataTable table;
         public Main_view()
         {
+            
             InitializeComponent();
+            table = new DataTable();
 
             connection = Connection.conectar();
 
             connection.Open();
             SqlDataAdapter data_adapter = new SqlDataAdapter("select * from ligas", connection);
-            DataTable table = new DataTable();
             
             data_adapter.Fill(table);
-            connection.Close();
 
+            connection.Close();
             liga_box.ValueMember = "codLiga";
             liga_box.DisplayMember = "nomLiga";
             liga_box.DataSource = table;
-            
-     
-        }
-
-  
-        private void event_liga_index_changed(object sender, EventArgs e)
-        {
             connection.Open();
-            DataTable table = new DataTable();
+            table = new DataTable();
             SqlCommand command = new SqlCommand("select * from dbo.equipos_liga(@equipo)", connection);
 
             command.Parameters.AddWithValue("@equipo", liga_box.SelectedValue);
             SqlDataReader reader = command.ExecuteReader();
             table.Load(reader);
+
             dataGridView1.DataSource = table;
             connection.Close();
+           
+            // rellenar_tabla();
+
 
         }
+
+
+
+
+       
+       
+        private void event_liga_index_changed(object sender, EventArgs e)
+        {
+            rellenar_tabla();
+            
+            
+
+        }
+        private void rellenar_tabla()
+        {
+            dataGridView1.Columns.Clear();
+
+            Console.WriteLine("asdasdasd");
+            connection.Open();
+            table = new DataTable();
+            SqlCommand command = new SqlCommand("select * from dbo.equipos_liga(@equipo)", connection);
+
+            command.Parameters.AddWithValue("@equipo", liga_box.SelectedValue);
+            SqlDataReader reader = command.ExecuteReader();
+            table.Load(reader);
+
+            dataGridView1.DataSource = table;
+            dataGridView1.Columns[0].HeaderText = "Nombre equipo";
+            connection.Close();
+           
+            DataGridViewButtonColumn buttons_column = new DataGridViewButtonColumn();
+            buttons_column.Name = "QR";
+            buttons_column.Text = "generar QR";
+            buttons_column.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(buttons_column);
+            
+        }
+       
 
         private void button_consulta_contratos_Click(object sender, EventArgs e)
         {
@@ -100,5 +140,27 @@ namespace Ejemplo_futbol
 
 
         }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            if (e.ColumnIndex == 1)
+            {
+               
+                String qr_string = "";
+
+                foreach (Object field in table.Rows[e.RowIndex].ItemArray)
+                {
+                    qr_string += field.ToString() + " ";
+                }
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(qr_string, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
+                Bitmap qrCodeImage = qrCode.GetGraphic(7);
+
+                new QRview(qrCodeImage).Show();
+            }
+        }
+
+
     }
 }
